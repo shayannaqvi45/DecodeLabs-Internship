@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple responsive webpage built with HTML and CSS media queries." />
+  <title>My Responsive Website</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <div class="logo">MyWebsite</div>
+
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Hamburger button (shows on mobile) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile dropdown menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#services" onclick="closeMenu()">Services</a></li>
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <h1>Welcome to My Website</h1>
+    <p>A simple, clean and responsive webpage that works on all screen sizes.</p>
+    <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+      View Services
+    </button>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <p class="subtitle">Here's what we offer to help you grow.</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Web Design</h3>
+        <p>We create clean and attractive website designs that look great on every device.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>All our projects are fully responsive and work perfectly on phones and tablets.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Fast & Reliable</h3>
+        <p>We build fast-loading websites with clean, well-structured HTML and CSS code.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="about-inner">
+
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>We are a small team of web developers who love building simple, clean websites. Our goal is to make the web accessible and beautiful for everyone.</p>
+        <p>We use modern HTML and CSS techniques like Flexbox, CSS Grid, and Media Queries to ensure every site works on all screen sizes.</p>
+      </div>
+
+      <div class="about-img">
+        📐 Responsive Design
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have a question? Send us a message and we'll get back to you soon.</p>
+
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+  </footer>
+
+  <!-- ── JAVASCRIPT ── -->
+  <script>
+    // Toggle mobile menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu   = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', function () {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Simple form submit handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! Your message has been sent.');
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>
